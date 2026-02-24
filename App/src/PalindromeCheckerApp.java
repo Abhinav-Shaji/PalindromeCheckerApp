@@ -1,3 +1,4 @@
+import java.util.*;
 public class PalindromeCheckerApp {
     public static void main(String [] args){
         System.out.println("Welcome to Palindrome Checker App Management sytem");
@@ -71,5 +72,39 @@ public class PalindromeCheckerApp {
 // Display result
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
+
+        // ==============================
+// UC6: FIFO vs LIFO Demonstration
+// ==============================
+
+        System.out.println("\n--- FIFO vs LIFO Demonstration ---");
+
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
+
+// Enqueue (FIFO) and Push (LIFO)
+        for (int i = 0; i < input.length(); i++) {
+            queue.add(input.charAt(i));   // Enqueue
+            stack.push(input.charAt(i));  // Push
+        }
+
+        isPalindrome = true;
+
+// Compare Dequeue vs Pop
+        while (!queue.isEmpty()) {
+
+            char fromQueue = queue.remove(); // Dequeue (FIFO)
+            char fromStack = stack.pop();    // Pop (LIFO)
+
+            System.out.println("Queue (FIFO): " + fromQueue +
+                    " | Stack (LIFO): " + fromStack);
+
+            if (fromQueue != fromStack) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Using Queue & Stack - Is Palindrome? : " + isPalindrome);
     }
 }
