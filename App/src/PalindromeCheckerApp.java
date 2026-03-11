@@ -74,8 +74,8 @@ public class PalindromeCheckerApp {
         System.out.println("Is Palindrome? : " + isPalindrome);
 
         // ==============================
-// UC6: FIFO vs LIFO Demonstration
-// ==============================
+        // UC6: FIFO vs LIFO Demonstration
+        // ==============================
 
         System.out.println("\n--- FIFO vs LIFO Demonstration ---");
 
@@ -107,7 +107,7 @@ public class PalindromeCheckerApp {
 
         System.out.println("Using Queue & Stack - Is Palindrome? : " + isPalindrome);
 
-     // ************************************************7
+        // ************************************************7
 
         System.out.println("\n--- Deque (Front vs Rear) Demonstration ---");
 
@@ -209,17 +209,14 @@ public class PalindromeCheckerApp {
         class RecursiveChecker {
             boolean check(String str, int start, int end) {
 
-                // Base condition
                 if (start >= end) {
                     return true;
                 }
 
-                // Compare start & end characters
                 if (str.charAt(start) != str.charAt(end)) {
                     return false;
                 }
 
-                // Recursive call
                 return check(str, start + 1, end - 1);
             }
         }
@@ -228,5 +225,34 @@ public class PalindromeCheckerApp {
         isPalindrome = rc.check(input, 0, input.length() - 1);
 
         System.out.println("Using Recursion (Call Stack) - Is Palindrome? : " + isPalindrome);
+
+        //***************************************10
+        // UC10: Case-Insensitive & Space-Ignored Palindrome
+
+        System.out.println("\n--- UC10: Case-Insensitive & Space-Ignored Palindrome ---");
+
+        String text = "Madam In Eden Im Adam";
+
+        // Normalize string
+        String normalized = text.replaceAll("\\s+", "").toLowerCase();
+
+        System.out.println("Original Text : " + text);
+        System.out.println("Normalized Text : " + normalized);
+
+        int left = 0;
+        int right = normalized.length() - 1;
+
+        isPalindrome = true;
+
+        while (left < right) {
+            if (normalized.charAt(left) != normalized.charAt(right)) {
+                isPalindrome = false;
+                break;
+            }
+            left++;
+            right--;
+        }
+
+        System.out.println("Ignoring Spaces & Case - Is Palindrome? : " + isPalindrome);
     }
 }
